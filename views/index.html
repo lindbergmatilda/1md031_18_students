@@ -1,9 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>DELI-VERY</title>
+        <title>Page title shown in window title</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="\css\style.css">
     </head>
     <body>
-        <h1>Hello World!!!</h1>
+        <main>
+          <h1>Välkommen till BurgerPrincess</h1>
+
+             <section>
+               <h2>Välj hamburgare</h2>
+               <p> Välj en av alla våra hamburgare </p>
+
+               <table>
+                 <thead>
+                   <tr>
+                     <th>Super Happy Meal</th>
+                     <th>Super Tasty Meal</th>
+                     <th>Double Tasty Meal</th>
+                   </tr>
+
+
+                 <tbody>
+                   <tr>
+                     <td><img src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Cheeseburger.jpg?$Product_Desktop$" alt="Cheeseburger" title="Cheeseburger" width="150"></td>
+                     <td><img src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Quarter-Pounder-with-Cheese.jpg?$Product_Desktop$" alt="Tasty Cheeseburger" title="Tasty Cheeseburger" width="150"></td>
+                     <td><img src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Big-Mac.jpg?$Product_Desktop$" alt="Double Cheeseburger" title="Double Cheeseburger" width="150"></td>
+
+                   </tr>
+
+                   <tr class="ingredienser">
+                     <td>
+                       <ul>
+                         <li> <span id="glutenfri">Glutenfri</span></li>
+                         <li><span id="nötter">Innehåller inget spår av nötter</span></li>
+                         <li><span id="laktosfri">Laktosfri</span></li>
+                       </ul>
+                       </td>
+
+                      <td>
+                        <ul>
+                          <li>Massor med gluten</li>
+                          <li>Innehåller massor med spår av nötter</li>
+                          <li>En laktosbomb</li>
+                        </ul>
+                      </td>
+
+                      <td>
+                        <ul>
+                          <li>Dubbelt med gluten</li>
+                          <li>Innehåller dubbelt med spår av nötter</li>
+                          <li>En dubbel laktosbomb</li>
+                        </ul>
+                      </td>
+                  </tr>
+
+                  </tbody>
+                </table>
+             </section>
+
+
+          <section>
+            <h2>Kundinformation</h2>
+            <p> Vi behöver information för att slutföra din beställning </p>
+
+            <h3>Leveransinformation</h3>
+            <form>
+              <p>
+                <label for="full name">Fullständigt namn</label><br>
+                <input type="text" id="full name" name="name" required="required" placeholder="För- och efternamn">
+              </p>
+              <p>
+                <label for="email">E-mail</label><br>
+                <input type="email" id="email" name="em" required="required" placeholder="E-mailadress">
+              </p>
+              <p>
+                <label for="gata">Gata</label><br>
+                <input type="text" id="gata" name="gn" required="required" placeholder="Gatunamn">
+              </p>
+              <p>
+                <label for="gatunr">Gatunummer</label><br>
+                <input type="number" id="gatunr" name="gnr" required="required" placeholder="Gatu- eller husnummer">
+              </p>
+              <p>
+                  <label for="betalning">Välj betalningssätt</label><br>
+                  <select id="betalning" name="bs">
+                      <option>Swish</option>
+                      <option selected="selected">Kortbetalning </option>
+                      <option>Klarna</option>
+                      <option>PayPal</option>
+                  </select>
+              </p>
+              <p>
+                <label for="kön">Kön</label><br>
+                <input type="radio" id="kön" name="kön" value"Man">Man<br>
+                <input type="radio" id="kön" name="kön" value="Kvinna">Kvinna<br>
+                <input type="radio" id="kön" name="kön" value="Icke-binär">Icke-binär<br>
+                <input type="radio" id="kön" name="kön" value="Annat" checked="checked">Annat
+              </p>
+
+            </form>
+
+
+          </section>
+
+          <button type="submit"><img src="https://f.nordiskemedier.dk/2di1l4njl79vhaeb_660_660.jpg" width="25"> Slutför köpet</button>
+        </main>
+        <footer> <hr> &copy 2020 Hypothetical Burgers inc </footer>
     </body>
 </html>
