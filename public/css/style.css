@@ -2,7 +2,84 @@
 body {
     font-family: Cambria, sans-serif;
     font-size: 14pt;
+  }
+
+
+#meny {
+  text-align: center;
+  margin: 50px 50px;
+  padding: 20px 50px 60px 60px;
+  border-style: dashed;
+  border-color: #C0C0C0;
+}
+
+.ingredienser {
+  font-weight: bold;
+  text-align: left;
+}
+
+
+
+#info {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px 40px;
+  border-style: double;
+  border-color: #008080;
+  border-width: 20px;
+}
+
+
+#headerimage{
+  opacity: 0.7;
+  width: 100%;
+  height: inherit; /* auto passade inte bra */
+}
+
+#headtext{
+  position: absolute;
+  margin-top: -450px;
+  margin-left: 350px;
+}
+
+#head{
+  height: 500px;
+  overflow: hidden;
+
+}
+
+button:hover {
+  background-color:#000080;
+  cursor: pointer;
+}
+button{
+  margin: 10px 0px;
+}
+
+.wrapper {
+     display: grid;
+     grid-gap: 10px;
+     grid-template-columns: 300px 300px 300px;
+   }
+
+.burger {
+       border-radius: 5px;
+       padding: 20px;
+       font-size: 100%;
+       margin:auto;
     }
-    .ingredienser {
-      font-weight: bold;
-      }
+
+.happy {
+  grid-column: 1 ;
+  grid-row: 1 ;
+}
+
+.tasty{
+  grid-column: 2 ;
+  grid-row: 1 ;
+}
+
+.double{
+  grid-column: 3 ;
+  grid-row: 1 ;
+}
