@@ -5,63 +5,64 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="\css\style.css">
     </head>
-    <body>
-        <main>
-          <h1>Välkommen till BurgerPrincess</h1>
 
-             <section>
+    <body>
+      <div id="head">
+        <img id="headerimage" src="https://static.thatsup.co/content/img/place/b/u/bun-meat-bun-farsta-0.jpg">
+        <h1 id="headtext">Välkommen till BurgerPrincess</h1>
+      </div>
+
+        <main>
+
+             <section id="meny">
                <h2>Välj hamburgare</h2>
                <p> Välj en av alla våra hamburgare </p>
 
-               <table>
-                 <thead>
-                   <tr>
-                     <th>Super Happy Meal</th>
-                     <th>Super Tasty Meal</th>
-                     <th>Double Tasty Meal</th>
-                   </tr>
+
+               <div class="wrapper">
+
+                 <div class="burger happy">
+                   <h3 class="burgername"> Super Happy Meal </h3>
+                   <img class="burgerpic" src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Cheeseburger.jpg?$Product_Desktop$" alt="Cheeseburger" title="Cheeseburger" width="150">
+                   <ul>
+                     <div class="ingredienser">
+                     <li> Glutenfri </li>
+                     <li>Innehåller inget spår av nötter</li>
+                     <li>Laktosfri</li>
+                     </div>
+                   </ul>
+                 </div>
+
+                 <div class="burger tasty">
+                   <h3 class="burgername"> Super Tasty Meal </h3>
+                   <img class="burgerpic" src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Quarter-Pounder-with-Cheese.jpg?$Product_Desktop$" alt="Tasty Cheeseburger" title="Tasty Cheeseburger" width="150">
+                   <ul>
+                     <div class="ingredienser">
+                     <li>Massor med gluten</li>
+                     <li>Innehåller massor med spår av nötter</li>
+                     <li>En laktosbomb</li>
+                     </div>
+                   </ul>
+                 </div>
 
 
-                 <tbody>
-                   <tr>
-                     <td><img src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Cheeseburger.jpg?$Product_Desktop$" alt="Cheeseburger" title="Cheeseburger" width="150"></td>
-                     <td><img src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Quarter-Pounder-with-Cheese.jpg?$Product_Desktop$" alt="Tasty Cheeseburger" title="Tasty Cheeseburger" width="150"></td>
-                     <td><img src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Big-Mac.jpg?$Product_Desktop$" alt="Double Cheeseburger" title="Double Cheeseburger" width="150"></td>
+                 <div class="burger double">
+                   <h3 class="burgername"> Double Tasty Meal </h3>
+                   <img class="burgerpic" src="https://www.mcdonalds.com/is/image/content/dam/uk/nfl/nutrition/nfl-product/product/products/mcdonalds-Big-Mac.jpg?$Product_Desktop$" alt="Double Cheeseburger" title="Double Cheeseburger" width="150">
+                   <ul>
+                     <div class="ingredienser">
+                     <li>Dubbelt med gluten</li>
+                     <li>Innehåller dubbelt med spår av nötter</li>
+                     <li>En dubbel laktosbomb</li>
+                     </div>
+                   </ul>
+                 </div>
 
-                   </tr>
-
-                   <tr class="ingredienser">
-                     <td>
-                       <ul>
-                         <li> <span id="glutenfri">Glutenfri</span></li>
-                         <li><span id="nötter">Innehåller inget spår av nötter</span></li>
-                         <li><span id="laktosfri">Laktosfri</span></li>
-                       </ul>
-                       </td>
-
-                      <td>
-                        <ul>
-                          <li>Massor med gluten</li>
-                          <li>Innehåller massor med spår av nötter</li>
-                          <li>En laktosbomb</li>
-                        </ul>
-                      </td>
-
-                      <td>
-                        <ul>
-                          <li>Dubbelt med gluten</li>
-                          <li>Innehåller dubbelt med spår av nötter</li>
-                          <li>En dubbel laktosbomb</li>
-                        </ul>
-                      </td>
-                  </tr>
-
-                  </tbody>
-                </table>
+               </div>
              </section>
 
 
-          <section>
+          <section id="info">
             <h2>Kundinformation</h2>
             <p> Vi behöver information för att slutföra din beställning </p>
 
@@ -69,7 +70,7 @@
             <form>
               <p>
                 <label for="full name">Fullständigt namn</label><br>
-                <input type="text" id="full name" name="name" required="required" placeholder="För- och efternamn">
+                <input type="text" id="fullname" name="name" required="required" placeholder="För- och efternamn">
               </p>
               <p>
                 <label for="email">E-mail</label><br>
