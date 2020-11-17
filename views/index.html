@@ -4,13 +4,22 @@
         <title>Best Burgers - HealthyBurgers</title>
         <meta charset="utf-8"/>
 
-        <script src="https://vuejs.org/js/vue.js"></script>
 
         <script type="text/javascript" src="js/menu.js" defer></script>
         <script src="js/js_script.js" defer></script>
+        <script src="https://vuejs.org/js/vue.js"></script>
         <script src="js/vue_script.js" defer></script>
-
         <link rel="stylesheet" type="text/css" href="\css\style.css">
+
+        <!-- karta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>DELI-VERY MAP</title>
+        <link rel="stylesheet" href="css/deli-very.css">
+        <script src="/vue/vue.js" defer></script>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="js/deli-very.js" defer></script>
+        <!-- karta -->
+
     </head>
 
     <body>
@@ -23,61 +32,51 @@
       <main>
 
 
-        <section id="menu">
+          <section id="menu">
 
-          <div id='menuHead'>
-            <h2>Välj en hamburgare</h2>
-            <p> Välj en av alla våra nyttiga hamburgare </p>
-          </div>
+            <div id='menuHead'>
+              <h2>Välj en hamburgare</h2>
+              <p> Välj en av alla våra nyttiga hamburgare </p>
+            </div>
 
-         <div id= 'burgID'>
 
              <div class="wrapper">
-
                <div v-for= "burger in burgers" :class="['hamburger', burger.burgerID]">
-                <h4> {{ burger.name}} </h4>
+                 <h4> {{ burger.name}} </h4>
                  <div><img :src="burger.imgUrl" width= "150"></div>
 
-                <ul>
-                  <li v-if=burger.gluten!=false> Gluten </li>
-                  <li v-else> Glutenfri </li>
-                  <li v-if=burger.lactose!=false> Laktos</li>
-                  <li v-else> Laktosfri </li>
-                  <li v-if=burger.nuts!=false> Nötter</li>
-                  <li v-else> Nötfri </li>
-                </ul>
-                <input type="checkbox" class="burgerCheckBox" name="burgerBox" :value=burger.name> Välj
-              </div>
+                 <ul>
+                   <li v-if=burger.gluten!=false> Gluten </li>
+                   <li v-else> Glutenfri </li>
+                   <li v-if=burger.lactose!=false> Laktos</li>
+                   <li v-else> Laktosfri </li>
+                   <li v-if=burger.nuts!=false> Nötter</li>
+                   <li v-else> Nötfri </li>
+                 </ul>
+                 <input type="checkbox" class="burgerCheckBox" name="burgerBox" :value=burger.name> Välj
               </div>
             </div>
 
-        </section>
+          </section>
 
 
 
-        <section id="info">
-          <h2>Kundinformation</h2>
-          <p> Vi behöver information för att slutföra din beställning </p>
 
-          <h3>Leveransinformation</h3>
-          <form>
-            <p>
-              <label for="full name">Fullständigt namn</label><br>
-              <input type="text" id="fullname" name="name" required="required" placeholder="För- och efternamn">
-            </p>
-            <p>
-              <label for="email">E-mail</label><br>
-              <input type="email" id="email" name="em" required="required" placeholder="E-mailadress">
-            </p>
-            <p>
-              <label for="gata">Gata</label><br>
-              <input type="text" id="gata" name="gn" required="required" placeholder="Gatunamn">
-            </p>
-            <p>
-              <label for="gatunr">Gatunummer</label><br>
-              <input type="number" id="gatunr" name="gnr" required="required" placeholder="Gatu- eller husnummer">
-            </p>
-            <p>
+          <section id="info">
+            <h2>Kundinformation</h2>
+            <p> Vi behöver information för att slutföra din beställning </p>
+
+            <h3>Leveransinformation</h3>
+            <form>
+              <p>
+                <label for="full name">Fullständigt namn</label><br>
+                <input type="text" id="fullname" name="name" required="required" placeholder="För- och efternamn">
+              </p>
+              <p>
+                <label for="email">E-mail</label><br>
+                <input type="email" id="email" name="em" required="required" placeholder="E-mailadress">
+              </p>
+              <p>
                 <label for="betalning">Välj betalningssätt</label><br>
                 <select id="betalning" name="bs">
                     <option>Swish</option>
@@ -85,25 +84,41 @@
                     <option>Klarna</option>
                     <option>PayPal</option>
                 </select>
-            </p>
-            <p>
-              <label for="kön">Kön</label><br>
-              <input type="radio" class="kön" name="kön" value="Man">Man<br>
-              <input type="radio" class="kön" name="kön" value="Kvinna">Kvinna<br>
-              <input type="radio" class="kön" name="kön" value="IckeBinär">Icke-binär<br>
-              <input type="radio" class="kön" name="kön" value="Annat" checked="checked">Annat
-            </p>
+              </p>
+              <p>
+                <label for="kön">Kön</label><br>
+                <input type="radio" class="kön" name="kön" value="Man">Man<br>
+                <input type="radio" class="kön" name="kön" value="Kvinna">Kvinna<br>
+                <input type="radio" class="kön" name="kön" value="IckeBinär">Icke-binär<br>
+                <input type="radio" class="kön" name="kön" value="Annat" checked="checked">Annat
+              </p>
+            </form>
 
-          </form>
+
+          </section>
+
+          <h1> Click in the map! </h1>
+          <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+          <div class="view-box">
+            <div id="dots" v-on:click="addOrder">
+                <div
+                  v-for="(order, key) in orders"
+                  v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                  {{key}}
+                </div>
+            </div>
+          </div>
+
+          <div id="order">
+            <button v-on:click="displayInfo" type="submit"><img src="https://f.nordiskemedier.dk/2di1l4njl79vhaeb_660_660.jpg" width="50"> Slutför köpet</button>
+          </div>
+
+          <div><h4>Din kontaktinfo</h4><p id="textOrderInfo">  </p></div>
+          <div><h4>Din beställning</h4><p id="textBurgerInfo"> </p></div>
+          <div id="myID"></div>
 
 
-        </section>
-
-        <button id="oButtonId" type="submit"><img src="https://f.nordiskemedier.dk/2di1l4njl79vhaeb_660_660.jpg" width="50"> Slutför köpet</button>
-        <div><h4>Din kontaktinfo</h4><p id="textOrderInfo">  </p></div>
-        <div><h4>Din beställning</h4><p id="textBurgerInfo"> </p></div>
-        <div id="myID"></div>
       </main>
-        <footer> <hr> &copy 2020 Hypothetical Burgers inc </footer>
+      <footer> <hr> &copy 2020 Hypothetical Burgers inc </footer>
     </body>
 </html>
