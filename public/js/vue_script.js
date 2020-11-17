@@ -13,12 +13,20 @@
 //var burgerList = [ham1, ham2, ham3, ham4, ham5];
 
 
-var vm = new Vue({
-  el: '#burgID',
+var menuVue = new Vue({
+  el: "#menu",
   data: {
      burgers: food
   }
 })
 
-var orderButton =document.getElementById("oButtonId");
-orderButton.addEventListener("click", clickMessage);
+
+var orderVue= new Vue({
+  el: '#order',
+  methods: {
+    displayInfo: function(){
+      textOrderInfo.textContent="Din kontaktinfo: " + getContactInfo();
+      textBurgerInfo.textContent="Din order: " + getBurgerInfo();
+    }
+  }
+})
