@@ -13,18 +13,44 @@
 //var burgerList = [ham1, ham2, ham3, ham4, ham5];
 
 
-var menuVue = new Vue({
-  el: "#menu",
-  data: {
-     burgers: food
-  }
-})
+// var menuVue = new Vue({
+//   el: '#burgID',
+//   data: {
+//      burgers: burgerList
+//   }
+// })
+
+'use strict';
+var socket = io();
 
 
 var orderVue= new Vue({
   el: '#order',
+  data: {
+     //orders: {},
+     burgers: food,
+     ordLocation: {details:{x:0 ,y:0}},
+     orderItems: {}
+  },
   methods: {
     displayInfo: function(){
+      textOrderInfo.textContent="Din kontaktinfo: " + getContactInfo();
+      textBurgerInfo.textContent="Din order: " + getBurgerInfo();
+    },
+    displayOrder: function(event){
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                    y: event.currentTarget.getBoundingClientRect().top};
+      this.ordLocation={ details: { x: event.clientX - 10 - offset.x,
+                                           y: event.clientY - 10 - offset.y }};
+
+
+    },
+    addOrder: function (event) {
+      socket.emit("addOrder", { orderId: Math.floor(Math.random()*(100-1+1)+1),
+                                details: this.ordLocation.details,
+                                orderItems: getBurgerInfo(),
+                                orderContact: getContactInfo()
+                              });
       textOrderInfo.textContent="Din kontaktinfo: " + getContactInfo();
       textBurgerInfo.textContent="Din order: " + getBurgerInfo();
     }

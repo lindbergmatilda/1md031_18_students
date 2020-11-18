@@ -3,22 +3,19 @@
     <head>
         <title>Best Burgers - HealthyBurgers</title>
         <meta charset="utf-8"/>
-
+        <script src="https://vuejs.org/js/vue.js"></script>
+        <script src="/socket.io/socket.io.js" defer></script>
 
         <script type="text/javascript" src="js/menu.js" defer></script>
         <script src="js/js_script.js" defer></script>
-        <script src="https://vuejs.org/js/vue.js"></script>
         <script src="js/vue_script.js" defer></script>
         <link rel="stylesheet" type="text/css" href="\css\style.css">
 
-        <!-- karta -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>DELI-VERY MAP</title>
+
         <link rel="stylesheet" href="css/deli-very.css">
-        <script src="/vue/vue.js" defer></script>
-        <script src="/socket.io/socket.io.js" defer></script>
-        <script src="js/deli-very.js" defer></script>
-        <!-- karta -->
+
+
+
 
     </head>
 
@@ -31,14 +28,13 @@
 
       <main>
 
-
+        <div id="order">
           <section id="menu">
 
             <div id='menuHead'>
               <h2>Välj en hamburgare</h2>
               <p> Välj en av alla våra nyttiga hamburgare </p>
             </div>
-
 
              <div class="wrapper">
                <div v-for= "burger in burgers" :class="['hamburger', burger.burgerID]">
@@ -58,7 +54,6 @@
             </div>
 
           </section>
-
 
 
 
@@ -100,22 +95,21 @@
           <h1> Click in the map! </h1>
           <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
           <div class="view-box">
-            <div id="dots" v-on:click="addOrder">
+            <div id="dots" v-on:click="displayOrder">
                 <div
-                  v-for="(order, key) in orders"
-                  v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-                  {{key}}
+
+                  v-bind:style="{ left: ordLocation.details.x + 'px', top: ordLocation.details.y + 'px'}">
+                  T
                 </div>
             </div>
           </div>
 
-          <div id="order">
-            <button v-on:click="displayInfo" type="submit"><img src="https://f.nordiskemedier.dk/2di1l4njl79vhaeb_660_660.jpg" width="50"> Slutför köpet</button>
-          </div>
+          <button v-on:click="addOrder"  type="submit"><img src="https://f.nordiskemedier.dk/2di1l4njl79vhaeb_660_660.jpg" width="50"> Slutför köpet</button>
 
           <div><h4>Din kontaktinfo</h4><p id="textOrderInfo">  </p></div>
           <div><h4>Din beställning</h4><p id="textBurgerInfo"> </p></div>
           <div id="myID"></div>
+        </div>
 
 
       </main>

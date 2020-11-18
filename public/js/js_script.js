@@ -13,26 +13,36 @@ function MenuItem(id, hamburger, kC, g, l, n, img){
   };
 }
 
+// Eventlistener in JavaScript:
 //var orderButton =document.getElementById("oButtonId");
 //orderButton.addEventListener("click", clickMessage);
 
-//function clickMessage(){
-//  console.log("Button clicked!");
-//}
+function clickMessage(){
+  console.log("Button clicked!");
+  console.log(getContactInfo());
+  console.log(getBurgerInfo());
+  var infoArray=[getContactInfo(), getBurgerInfo()];
+
+
+  textOrderInfo.textContent="Din kontaktinfo: " + getContactInfo();
+  textBurgerInfo.textContent="Din order: " + getBurgerInfo();
+}
+
+
 function getContactInfo(){
   var contactArray=[];
 
   var fullName= document.getElementById("fullname");
   var eMail= document.getElementById("email");
-  var gata= document.getElementById("gata");
-  var gatuNr= document.getElementById("gatunr");
+  //var gata= document.getElementById("gata");
+  //var gatuNr= document.getElementById("gatunr");
   var betalning=document.getElementById("betalning");
   var gender=document.getElementsByName("kön");
 
   contactArray.push(fullName.value);
   contactArray.push(eMail.value);
-  contactArray.push(gata.value);
-  contactArray.push(gatuNr.value);
+  //contactArray.push(gata.value);
+  //contactArray.push(gatuNr.value);
   contactArray.push(betalning.value);
 
   for (var i = 0, length = gender.length; i < length; i++) {
@@ -42,6 +52,16 @@ function getContactInfo(){
   }
   return contactArray
 }
+
+function getContactText(){
+  var array = getContactInfo();
+  var text= "";
+  text[1]= " Fullname: " + array[1];
+  text[2]= "E-mail: " + array[2];
+  text[3]= "Betalningssätt: " + array[5];
+  text[4]= "Kön: " + array[6];
+  return text;
+  }
 
 
 
@@ -54,21 +74,4 @@ function getBurgerInfo(){
     }
   }
   return burgerArray
-}
-
-
-function clickMessage(){
-  console.log("Button clicked!");
-  console.log(getContactInfo());
-  console.log(getBurgerInfo());
-  var infoArray=[getContactInfo(), getBurgerInfo()];
-
-  //var orderInfo=document.getElementById("TextOrderInfo");
-  //var text = document.createTextNode(getContactInfo());
-  // for(var i = 0, length = getContactInfo().length; i < length; i++){
-  //   textOrderInfo.textContent=getContactInfo()[i];
-  // }
-  textOrderInfo.textContent="Din kontaktinfo: " + getContactInfo();
-  textBurgerInfo.textContent="Din order: " + getBurgerInfo();
-
 }
