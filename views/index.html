@@ -42,11 +42,11 @@
                  <div><img :src="burger.imgUrl" width= "150"></div>
 
                  <ul>
-                   <li v-if=burger.gluten!=false> Gluten </li>
+                   <li v-if=burger.gluten==true> Gluten </li>
                    <li v-else> Glutenfri </li>
-                   <li v-if=burger.lactose!=false> Laktos</li>
+                   <li v-if=burger.lactose==true> Laktos</li>
                    <li v-else> Laktosfri </li>
-                   <li v-if=burger.nuts!=false> Nötter</li>
+                   <li v-if=burger.nuts==true> Nötter</li>
                    <li v-else> Nötfri </li>
                  </ul>
                  <input type="checkbox" class="burgerCheckBox" name="burgerBox" :value=burger.name> Välj
